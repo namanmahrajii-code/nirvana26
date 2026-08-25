@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+:root {
+  --bg-pitch: #060608;
+  --bg-surface: #0e0f14;
+  --bg-card: #12131a;
+  --accent-red: #E50914;
+  --accent-crimson: #FF1E27;
+  --accent-ruby: #B30006;
+  --text-primary: #F4F4F6;
+  --text-muted: #8E8E98;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-red: rgba(229, 9, 20, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-pitch);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-pitch);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Gritty Halftone Grain & Risograph Texture */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.bg-halftone-red {
+  background-image: radial-gradient(rgba(229, 9, 20, 0.18) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+.bg-grid-cyber {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(229, 9, 20, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 9, 20, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Distressed Film Border Notches (American Psycho Contact Sheet Aesthetic) */
+.film-sprocket {
+  position: relative;
+}
+.film-sprocket::before,
+.film-sprocket::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  background-image: radial-gradient(circle, #060608 6px, transparent 7px);
+  background-size: 18px 24px;
+  z-index: 10;
+  pointer-events: none;
+}
+.film-sprocket::before {
+  left: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.film-sprocket::after {
+  right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Brutalist Stamp Badges */
+.stamp-badge {
+  border: 1px solid var(--accent-red);
+  background: rgba(229, 9, 20, 0.07);
+  color: #ff333d;
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.12);
+}
+
+.stamp-badge-white {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  color: #F4F4F6;
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Red Stencil Highlight Bar */
+.red-mark {
+  position: relative;
+  display: inline-block;
+}
+.red-mark::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -4px;
+  right: -4px;
+  height: 35%;
+  background: rgba(229, 9, 20, 0.35);
+  z-index: -1;
+  transform: skewX(-12deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272e;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* Typography styles */
+.font-editorial-serif {
+  font-family: 'Playfair Display', 'Cinzel', 'Georgia', serif;
+  letter-spacing: -0.02em;
+}
+
+.font-editorial-heading {
+  font-family: var(--font-syne), 'Syne', sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.font-tech-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
+
+/* Noise effect */
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scanlines overlay */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.35)
+  );
+  background-size: 100% 4px;
+}
+
+/* Glowing text */
+.text-glow-red {
+  text-shadow: 0 0 20px rgba(229, 9, 20, 0.6), 0 0 40px rgba(229, 9, 20, 0.3);
+}
+
+.box-glow-red {
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.25), inset 0 0 15px rgba(229, 9, 20, 0.1);
+}
